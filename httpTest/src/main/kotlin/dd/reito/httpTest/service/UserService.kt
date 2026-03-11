@@ -13,6 +13,12 @@ class UserService(
     fun getAllUsers(): List<UserEntity> {
         return userRepository.findAll()
     }
+    // nameでの検索ではなくてidでの検索、idでの検索なので、localstorage的なのでidを保管
+    // しかしlogin時にはidをそもそも取得するために必要。
+    fun getTargetUser(name: String): UserEntity {
+        println("login name = $name")
+        return userRepository.findByName(name)?: throw RuntimeException("user not Found")
+    }
 
     fun createUser(name: String): UserEntity {
         val find: Boolean = userRepository.existsByName(name)

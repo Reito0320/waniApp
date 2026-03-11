@@ -16,10 +16,17 @@ class UserController(
     private val userService: UserService
 ) {
     // game終了後のランキング画面にて使う。
-    @GetMapping("/results")
+    @GetMapping("/users")
     fun getAllUsers(): List<UserEntity> {
         return userService.getAllUsers()
     }
+
+    // loginで使うAPI
+    @GetMapping("/login/{name}")
+    fun getTargetUser(@PathVariable name: String): UserEntity {
+        return userService.getTargetUser(name)
+    }
+
 
     // 初回signOn時にname経由でpost
     @PostMapping("/signOn/{name}")

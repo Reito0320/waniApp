@@ -10,10 +10,10 @@ data class UserEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null,
 
     @Column(nullable = false)
-    val name: String,
+    var name: String = "",
 
     @Column
     var bestScore: Int = 0,
