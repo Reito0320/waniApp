@@ -8,6 +8,10 @@ import java.time.LocalDateTime
 
 
 @RestController
+// これによって前エンドポイントにapiがつく。
+// それによって画面として見たいエンドポイントか、
+// データ通信としてのエンドポイントかの棲み分けができる。
+@RequestMapping("/api")
 class UserController(
     private val userService: UserService
 ) {
