@@ -15,6 +15,18 @@
         android:theme="@style/Theme.Cat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".GameReady"
+            android:exported="false" />
+        <activity
+            android:name=".Photo5"
+            android:exported="false" />
+        <activity
+            android:name=".Photo4"
+            android:exported="false" />
+        <activity
+            android:name=".Photo3"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
