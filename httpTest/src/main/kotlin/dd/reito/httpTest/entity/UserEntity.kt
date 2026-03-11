@@ -16,9 +16,9 @@ data class UserEntity(
     val name: String,
 
     @Column
-    val bestScore: Int = 0,
+    var bestScore: Int = 0,
 
     @Column
-    val bestScoreDateTime:LocalDateTime? = null
+    var bestScoreDateTime:LocalDateTime? = null
 
 )

@@ -2,9 +2,9 @@ package dd.reito.httpTest.service
 
 import dd.reito.httpTest.entity.UserEntity
 import dd.reito.httpTest.repository.UserRepository
-import org.springframework.data.domain.Score
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+
 
 @Service
 class UserService(
@@ -13,23 +13,31 @@ class UserService(
     fun getAllUsers(): List<UserEntity> {
         return userRepository.findAll()
     }
+
     fun createUser(name: String): UserEntity {
-        val user = UserEntity(name = name)
-        return userRepository.save(user)
-    }
-    fun patchUser(id: Long, name:String): UserEntity {
-        val targetUser = userRepository.findById(id)
-            .orElseThrow { RuntimeException("user not found") }
-        val updatedUser = targetUser.copy(name = name)
-        return userRepository.save(updatedUser)
+        val find: Boolean = userRepository.existsByName(name)
+        if (find) {
+            throw RuntimeException("user already exists")
+        }
+          val user = UserEntity(name = name)
+          return userRepository.save(user)
     }
 
+    fun patchUser(id: Long ,bestScore: Int, bestScoreDateTime: LocalDateTime): UserEntity {
+        val targetUser = userRepository.findById(id).orElseThrow { RuntimeException("not Found") }
+        if (bestScore > targetUser.bestScore)  {
+          val updatedUser = targetUser.copy(bestScore = bestScore, bestScoreDateTime = bestScoreDateTime)
+          return userRepository.save(updatedUser)
+        }
+        return targetUser
+    }
+
+    // userのdateを消すシーンがないので今回使わないかも。。
     fun deleteUser(id: Long): Unit {
         val targetUser = userRepository.findById(id)
             .orElseThrow { RuntimeException("not found") }
         userRepository.deleteById(id)
     }
-
     fun allDelete() {
         userRepository.deleteAll()
     }
