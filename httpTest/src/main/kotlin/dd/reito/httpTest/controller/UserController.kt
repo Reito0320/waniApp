@@ -2,10 +2,8 @@ package dd.reito.httpTest.controller
 
 import dd.reito.httpTest.entity.UserEntity
 import dd.reito.httpTest.service.UserService
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
-
 
 @RestController
 // これによって前エンドポイントにapiがつく。
@@ -59,4 +57,10 @@ class UserController(
     fun allDelete() {
         userService.allDelete()
     }
+}
+
+fun main() {
+    val numberList = intArrayOf(1,2,3,4,5)
+    val targetNumber: Int? = numberList.find { it == 6 }
+    println(targetNumber) // null
 }

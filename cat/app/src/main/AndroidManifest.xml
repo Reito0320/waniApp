@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Cat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TopPage"
+            android:exported="false" />
+        <activity
             android:name=".RankingPage"
             android:exported="false" />
         <activity

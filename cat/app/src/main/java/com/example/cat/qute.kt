@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.cat.network.RetrofitClient
 import com.example.cat.storage.UserDataStore
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.plus
 
 class qute : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +34,10 @@ class qute : AppCompatActivity() {
             println(response)
             val currentScore = response.currentScore
             val bestScore = response.bestScore
-            if (currentScore > bestScore) {
+            if (currentScore > bestScore || currentScore == bestScore) {
                 resultView.text = "${userName.toString()}さん ${currentScore}匹(Tap)のワニが\n脱出することに成功しました。\n最高得点ですね。"
             } else {
                 resultView.text = "${userName.toString()}さん ${currentScore}匹(Tap)のワニが\n脱出することに成功しました。\n過去最高は${bestScore}匹(Tap)です。"
-            }
         }
         oneMoreButton.setOnClickListener {
             val intent = Intent(this@qute, GameReady::class.java)
@@ -50,4 +48,5 @@ class qute : AppCompatActivity() {
             startActivity(intent)
         }
     }
+}
 }

@@ -11,7 +11,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.cat.network.RetrofitClient
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+
 
 class RankingPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +37,13 @@ class RankingPage : AppCompatActivity() {
             val allData = RetrofitClient.api.users()
             val filterList = allData.filter { it.bestScore != 0 }
             val sortData = filterList.sortedByDescending { it.bestScore }
+            // formatをするためのもを作る。
+            val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
+
+            println(sortData[0].bestScoreDateTime)
             val rankingText = sortData.joinToString("\n") {
-                    "${it.bestScoreDateTime} ${it.name} ${it.bestScore}"
+                val dateTime = LocalDateTime.parse(it.bestScoreDateTime)
+                    "${dateTime.format(formatter)}\nName:${it.name} BestScore:${it.bestScore}\n"
             }
             rankingView.text = rankingText
         }

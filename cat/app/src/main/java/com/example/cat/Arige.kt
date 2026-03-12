@@ -12,7 +12,6 @@ import com.example.cat.network.RetrofitClient
 import com.example.cat.storage.UserDataStore
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
 
 class Arige : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class Arige : AppCompatActivity() {
                     startActivity(intent)
                 }
             } catch (error: Exception) {
-                println(error.message)
+                error.message
             }
         }
         var result: String = ""
