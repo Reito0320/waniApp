@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Cat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".TopPage"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".RankingPage"
@@ -54,7 +54,7 @@
             android:name=".SignOn"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".TopPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

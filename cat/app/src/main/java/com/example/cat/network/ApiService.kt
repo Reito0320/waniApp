@@ -8,6 +8,7 @@ import com.example.cat.network.response.LoginResponse
 import com.example.cat.network.response.RankingResponse
 import com.example.cat.network.response.SignOnResponse
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -33,4 +34,9 @@ interface ApiService {
         @Path("id") id: Long,
         @Body request: GameRequest
     ): GameResponse
+
+    @DELETE("/api/user/{id}")
+    suspend fun targetDelete(
+        @Path("id") id : Long,
+    ): Unit
 }

@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.cat.network.RetrofitClient
+import com.example.cat.storage.UserDataStore
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -27,10 +28,33 @@ class RankingPage : AppCompatActivity() {
         }
         val rankingView: TextView = findViewById(R.id.rankingView)
         val backButton: Button = findViewById(R.id.backButton)
+        val topButton: Button = findViewById(R.id.topButton)
+        val deleteButton: Button = findViewById(R.id.deleteButton)
 
         backButton.setOnClickListener {
             val intent = Intent(this@RankingPage, qute::class.java)
             startActivity(intent)
+        }
+        topButton.setOnClickListener {
+            val intent = Intent(this@RankingPage, TopPage::class.java)
+            startActivity(intent)
+        }
+
+        deleteButton.setOnClickListener {
+            lifecycleScope.launch {
+                try {
+                    val userDataStore = UserDataStore(applicationContext)
+                    val userId = userDataStore.getUserId()
+                    if (userId != null) {
+                        RetrofitClient.api.targetDelete(userId)
+                        val intent = Intent(this@RankingPage, TopPage::class.java)
+                        startActivity(intent)
+                    }
+                } catch (error: Exception) {
+                    error.message
+                }
+
+            }
         }
 
         lifecycleScope.launch {

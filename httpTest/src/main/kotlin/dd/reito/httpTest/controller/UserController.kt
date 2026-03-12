@@ -58,9 +58,9 @@ class UserController(
         userService.allDelete()
     }
 }
-
-fun main() {
-    val numberList = intArrayOf(1,2,3,4,5)
-    val targetNumber: Int? = numberList.find { it == 6 }
-    println(targetNumber) // null
-}
+//
+//fun main() {
+//    val numberList = intArrayOf(1,2,3,4,5)
+//    val targetNumber: Int? = numberList.find { it == 6 }
+//    println(targetNumber) // null
+//}

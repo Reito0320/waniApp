@@ -39,12 +39,12 @@ class UserService(
         return userRepository.save(result)
     }
 
-    // userのdateを消すシーンがないので今回使わないかも。。
     fun deleteUser(id: Long): Unit {
         val targetUser = userRepository.findById(id)
             .orElseThrow { RuntimeException("not found") }
         userRepository.deleteById(id)
     }
+
     fun allDelete() {
         userRepository.deleteAll()
     }

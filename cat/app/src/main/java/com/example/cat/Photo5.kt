@@ -58,10 +58,10 @@ class Photo5 : AppCompatActivity() {
                                     bestScore = count,
                                     bestScoreDateTime = LocalDateTime.now().toString(),
                                 )
-                                RetrofitClient.api.scorePatch(userId.toLong(),body)
+                                RetrofitClient.api.scorePatch(userId,body)
                             }
                     } catch (error: Exception) {
-                        countView.error = error.message
+                        error.message
                     }
                     val intent= Intent(this@Photo5, Arige::class.java)
                     startActivity(intent)
