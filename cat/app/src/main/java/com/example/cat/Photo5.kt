@@ -55,7 +55,7 @@ class Photo5 : AppCompatActivity() {
                                     bestScore = count,
                                     bestScoreDateTime = LocalDateTime.now().toString(),
                                 )
-                                val response = RetrofitClient.api.scorePatch(userId,body)
+                                val response = RetrofitClient.api.scorePatch(userId.toLong(),body)
                             }
                     } catch (error: Exception) {
                         countView.error = error.message

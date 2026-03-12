@@ -15,8 +15,17 @@
         android:theme="@style/Theme.Cat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".RankingPage"
+            android:exported="false" />
+        <activity
+            android:name=".qute"
+            android:exported="false" />
+        <activity
+            android:name=".RunArige"
+            android:exported="false" />
+        <activity
             android:name=".Arige"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".GameReady"
             android:exported="false" />

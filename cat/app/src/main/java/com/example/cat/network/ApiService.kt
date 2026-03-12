@@ -19,6 +19,7 @@ interface ApiService {
         @Path("name") name: String
     ): LoginResponse
 
+
     @POST("/api/signOn/{name}")
     suspend fun signOn(
         @Path("name") name: String
