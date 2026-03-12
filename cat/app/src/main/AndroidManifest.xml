@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Cat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Arige"
+            android:exported="false"/>
+        <activity
             android:name=".GameReady"
             android:exported="false" />
         <activity

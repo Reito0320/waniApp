@@ -29,7 +29,7 @@ class UserDataStore(private val context: Context) {
     // 値を取り出す際の関数。　きっとこれを別ファイルで使い倒す。
     suspend fun getUserId(): Long? {
         val preferences = context.dataStore.data.first()
-        return preferences[USER_ID] as Long?
+        return preferences[USER_ID]?.toLong()
     }
 
     suspend fun getUserName(): String? {

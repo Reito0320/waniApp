@@ -1,11 +1,14 @@
 package com.example.cat.network
 
+import com.example.cat.network.request.GameRequest
 import com.example.cat.network.request.LoginRequest
 import com.example.cat.network.request.SignOnRequest
+import com.example.cat.network.response.GameResponse
 import com.example.cat.network.response.LoginResponse
 import com.example.cat.network.response.SignOnResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -20,4 +23,10 @@ interface ApiService {
     suspend fun signOn(
         @Path("name") name: String
     ): SignOnResponse
+
+    @PATCH("/api/user/{id}")
+    suspend fun scorePatch(
+        @Path("id") id: Long,
+        @Body request: GameRequest
+    ): GameResponse
 }
