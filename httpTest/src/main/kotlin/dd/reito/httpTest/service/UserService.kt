@@ -29,13 +29,14 @@ class UserService(
           return userRepository.save(user)
     }
 
-    fun patchUser(id: Long ,bestScore: Int, bestScoreDateTime: LocalDateTime): UserEntity {
+    fun patchUser(id: Long ,currentScore: Int, bestScore: Int, bestScoreDateTime: LocalDateTime): UserEntity {
         val targetUser = userRepository.findById(id).orElseThrow { RuntimeException("not Found") }
         if (bestScore > targetUser.bestScore)  {
-          val updatedUser = targetUser.copy(bestScore = bestScore, bestScoreDateTime = bestScoreDateTime)
+          val updatedUser = targetUser.copy(currentScore=bestScore, bestScore = bestScore, bestScoreDateTime = bestScoreDateTime)
           return userRepository.save(updatedUser)
         }
-        return targetUser
+        val result = targetUser.copy(currentScore=bestScore, bestScore = targetUser.bestScore, bestScoreDateTime = targetUser.bestScoreDateTime)
+        return userRepository.save(result)
     }
 
     // userのdateを消すシーンがないので今回使わないかも。。

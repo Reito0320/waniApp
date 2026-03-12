@@ -43,7 +43,7 @@ class Login : AppCompatActivity() {
                     userDataStore.saveUser(response.id, response.name)
 
                     // ページ遷移用のコード
-                    val intent = Intent(this@Login, Photo1::class.java)
+                    val intent = Intent(this@Login, GameReady::class.java)
                     startActivity(intent)
                 } catch (error: Exception) {
                     userName.error = error.message

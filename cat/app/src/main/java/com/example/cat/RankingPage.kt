@@ -1,10 +1,17 @@
 package com.example.cat
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.cat.network.RetrofitClient
+import kotlinx.coroutines.launch
+import java.time.format.DateTimeFormatter
 
 class RankingPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +22,23 @@ class RankingPage : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val rankingView: TextView = findViewById(R.id.rankingView)
+        val backButton: Button = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener {
+            val intent = Intent(this@RankingPage, qute::class.java)
+            startActivity(intent)
+        }
+
+        lifecycleScope.launch {
+            val allData = RetrofitClient.api.users()
+            val filterList = allData.filter { it.bestScore != 0 }
+            val sortData = filterList.sortedByDescending { it.bestScore }
+            val rankingText = sortData.joinToString("\n") {
+                    "${it.bestScoreDateTime} ${it.name} ${it.bestScore}"
+            }
+            rankingView.text = rankingText
         }
     }
 }

@@ -41,8 +41,10 @@ class Photo5 : AppCompatActivity() {
             countView.text = count.toString()
         }
 
+        val time: Int = 5
+        timer.text = "残り時間: ${time.toString()}"
         lifecycleScope.launch {
-            for (i in 30 downTo 0) {
+            for (i in time downTo 0) {
                 delay(1000)
                 timer.text = "残り時間: ${i.toString()}"
                 if (i == 0) {
@@ -52,6 +54,7 @@ class Photo5 : AppCompatActivity() {
                         val userId = userDateStore.getUserId()
                             if (userId != null) {
                                 val body = GameRequest (
+                                    currentScore = count,
                                     bestScore = count,
                                     bestScoreDateTime = LocalDateTime.now().toString(),
                                 )

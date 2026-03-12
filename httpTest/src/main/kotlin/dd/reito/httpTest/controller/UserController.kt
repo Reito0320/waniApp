@@ -35,6 +35,7 @@ class UserController(
     }
 
     data class PatchUserScore(
+        val currentScore: Int,
         val bestScore: Int,
         val bestScoreDateTime: LocalDateTime,
     )
@@ -43,6 +44,7 @@ class UserController(
     fun patchUser(@PathVariable id: Long, @RequestBody score: PatchUserScore): UserEntity {
         return userService.patchUser(
             id,
+            score.currentScore,
             score.bestScore,
             score.bestScoreDateTime
         )

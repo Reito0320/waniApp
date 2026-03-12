@@ -5,6 +5,7 @@ import com.example.cat.network.request.LoginRequest
 import com.example.cat.network.request.SignOnRequest
 import com.example.cat.network.response.GameResponse
 import com.example.cat.network.response.LoginResponse
+import com.example.cat.network.response.RankingResponse
 import com.example.cat.network.response.SignOnResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -19,6 +20,8 @@ interface ApiService {
         @Path("name") name: String
     ): LoginResponse
 
+    @GET("/api/users")
+    suspend fun users (): List<RankingResponse>
 
     @POST("/api/signOn/{name}")
     suspend fun signOn(

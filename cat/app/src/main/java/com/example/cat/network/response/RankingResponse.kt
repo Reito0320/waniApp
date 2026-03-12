@@ -1,8 +1,6 @@
 package com.example.cat.network.response
 
-
-// サーバーからのレスポンスをjson形式で受け取る
-data class LoginResponse(
+data class RankingResponse (
     val id: Long,
     val name: String,
     val currentScore: Int,

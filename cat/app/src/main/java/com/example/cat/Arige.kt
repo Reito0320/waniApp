@@ -30,7 +30,7 @@ class Arige : AppCompatActivity() {
                 val userName = userDateStore.getUserName()
                 if (userName != null) {
                     val response = RetrofitClient.api.login(userName)
-                    input.setText(response.bestScore.toString())
+                    input.setText(response.currentScore.toString())
                     delay(1000)
                     button.performClick()
                     delay(1000)

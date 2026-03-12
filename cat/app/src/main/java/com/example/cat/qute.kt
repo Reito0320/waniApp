@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.cat.network.RetrofitClient
 import com.example.cat.storage.UserDataStore
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 
 class qute : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,8 +32,14 @@ class qute : AppCompatActivity() {
             val userDateStore = UserDataStore(applicationContext)
             val userName = userDateStore.getUserName()
             val response = RetrofitClient.api.login(userName.toString())
-            val bestScore = response.bestScore.toString()
-            resultView.text = "${userName.toString()}さん ${bestScore}匹(Tap)のワニが\n脱出することに成功しました。"
+            println(response)
+            val currentScore = response.currentScore
+            val bestScore = response.bestScore
+            if (currentScore > bestScore) {
+                resultView.text = "${userName.toString()}さん ${currentScore}匹(Tap)のワニが\n脱出することに成功しました。\n最高得点ですね。"
+            } else {
+                resultView.text = "${userName.toString()}さん ${currentScore}匹(Tap)のワニが\n脱出することに成功しました。\n過去最高は${bestScore}匹(Tap)です。"
+            }
         }
         oneMoreButton.setOnClickListener {
             val intent = Intent(this@qute, GameReady::class.java)

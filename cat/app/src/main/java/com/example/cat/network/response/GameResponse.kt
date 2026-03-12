@@ -5,6 +5,7 @@ import java.time.LocalDateTime
 data class GameResponse (
     val id: Long,
     val name: String,
+    val currentScore: Int,
     val bestScore: Int,
     val bestScoreDateTime: LocalDateTime
 )

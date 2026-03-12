@@ -16,6 +16,9 @@ data class UserEntity(
     var name: String = "",
 
     @Column
+    var currentScore: Int = 0,
+
+    @Column
     var bestScore: Int = 0,
 
     @Column

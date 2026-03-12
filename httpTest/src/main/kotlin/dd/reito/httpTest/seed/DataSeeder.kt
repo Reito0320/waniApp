@@ -23,7 +23,7 @@ class DataSeeder(
 
             val user2 = UserEntity(
                 name = "TestUser",
-                bestScore = 50
+                bestScore = 0
             )
 
             userRepository.saveAll(listOf(user1, user2))
