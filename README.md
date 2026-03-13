@@ -35,22 +35,38 @@ GET /api/login/{name}
 ```
 idを元にuserのGame情報を更新
 ```kotlin
-Patch /api/user/{id}
+PATCH /api/user/{id}
+```
+idを元にuserのDateを削除
+```kotlin
+DELETE /api/user/{id}
 ```
 
-## 学んだこと
-## Front
-### Android Studio
-直感的にUIを作ることができる点が最も良かった。
-IDEがIntelliJと似ているので、kotlinを同環境で開発しているエンジニアには抵抗感なく使えるのも利点の一つ。
-基本時に見た目の部分はxmlファイルでの操作。
-機能の部分はkotlinでの操作
-xmlで書いた要素をkotlinで取得する際の流れはJSでのDOM操作とほとんど同じ。
+## 使用技術
+### postgrest
+スタンダートなDBを使用
+### spring boot
+アプリケーションの雛形生成から、バックエンド周りの便利機能を提供
+### Retrofit
+client側のHttp通信の設定ができる
 
-## Back
-### Spring boot
-Http通信の雛形を公式HPのUI操作で簡単にIDEに構築できた。
-最も便利だと感じたのはアーキテクチャーのrepositoryの設定。
-ここにAPIとしてよく使う機能が盛り込んである。
-また、自分が新しいAPIを作りたい時も簡単に作成できてしまう。
+## 参考資料
+### 公式資料
 
+Kotlin
+https://kotlinlang.org/
+
+Spring boot
+https://spring.io/projects/spring-boot
+
+android studio
+https://developer.android.com/studio?hl=ja
+
+**Spring bootの基本**
+https://qiita.com/tarosa0001/items/93ad51f87fa9af31402a
+**Kotlinの基本文法**
+https://qiita.com/kiririnyo/items/aee905225902d096f7c0
+**Spring bootを使ったアーキテクチャー**
+https://qiita.com/shibainuu/items/757c2e418459e4b51dd1
+**Retrofitの基本**
+https://qiita.com/Omj-8/items/7b0cddbb8ae85138aa65
