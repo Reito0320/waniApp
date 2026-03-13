@@ -41,7 +41,7 @@ class Photo5 : AppCompatActivity() {
             countView.text = count.toString()
         }
 
-        val time: Int = 30
+        val time: Int = 10
         timer.text = "残り時間: ${time.toString()}"
         lifecycleScope.launch {
             for (i in time downTo 0) {
